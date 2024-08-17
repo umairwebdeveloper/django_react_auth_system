@@ -19,7 +19,9 @@ const ActivateAccountPage = () => {
 
 	useEffect(() => {
 		if (verified) {
-			toast.success("Account verified successfully. You can now Sign In!");
+			toast.success(
+				"Account verified successfully. You can now Sign In!"
+			);
 			navigate("/signin");
 		}
 	}, [verified, navigate]);
@@ -37,6 +39,7 @@ const ActivateAccountPage = () => {
 				<button
 					className="btn btn-primary btn-block"
 					onClick={handleVerifyAccount}
+					style={{ borderRadius: "50px" }}
 				>
 					Verify Account
 				</button>

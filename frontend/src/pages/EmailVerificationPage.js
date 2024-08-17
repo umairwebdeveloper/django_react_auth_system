@@ -18,6 +18,7 @@ const EmailVerificationPage = () => {
 				<button
 					className="btn btn-primary btn-block"
 					onClick={openGmail}
+					style={{ borderRadius: "50px" }}
 				>
 					Open Gmail
 				</button>
