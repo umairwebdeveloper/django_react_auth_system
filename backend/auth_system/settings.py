@@ -181,7 +181,6 @@ SIMPLE_JWT = {
 DOMAIN = os.environ.get("DOMAIN")
 SITE_NAME = os.environ.get("SITE_NAME")
 
-
 DJOSER = {
     'LOGIN_FIELD': "email",
     'USER_CREATE_PASSWORD_RETYPE': True,
@@ -201,8 +200,7 @@ DJOSER = {
         'user': 'accounts.serializers.UserCreateSerializer',
         'current_user': 'accounts.serializers.UserCreateSerializer',
         'user_delete': 'djoser.serializers.UserDeleteSerializer'
-    }
-
+    },
 }
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')

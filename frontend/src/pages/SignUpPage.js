@@ -23,28 +23,23 @@ const SignUpPage = () => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		if (password === re_password) {
-			const response = await dispatch(
+			dispatch(
 				signup(first_name, last_name, email, password, re_password)
 			);
-			if (response.success) {
-				toast.success(
-					"Account created successfully. Check your email to verify!"
-				);
-				navigate("/email-sent");
-			} else {
-				console.log(response);
-			}
 		} else {
 			toast.error("Passwords do not match!");
 		}
 	};
 
 	useEffect(() => {
-		isAuthenticated && navigate("/");
+		if (isAuthenticated) {
+			toast.success("Account created!");
+			navigate("/");
+		}
 	}, [isAuthenticated]);
 
 	return (

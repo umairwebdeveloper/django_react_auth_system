@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import { reset_password_confirm } from "../store/auth";
 
 const ResetPasswordConfirmPage = () => {
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { uid, token } = useParams();
-
-	const [requestSent, setRequestSent] = useState(false);
 	const [formData, setFormData] = useState({
 		new_password: "",
 		re_new_password: "",
@@ -22,18 +19,19 @@ const ResetPasswordConfirmPage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(
-			reset_password_confirm(uid, token, new_password, re_new_password)
-		);
-		setRequestSent(true);
-	};
-
-	useEffect(() => {
-		if (requestSent) {
-			toast.success("Password reset successfully. You can now sign in!");
-			navigate("/signin");
+		if (new_password === re_new_password) {
+			dispatch(
+				reset_password_confirm(
+					uid,
+					token,
+					new_password,
+					re_new_password
+				)
+			);
+		} else {
+			toast.error("Passwords do not match!");
 		}
-	}, [requestSent, navigate]);
+	};
 
 	return (
 		<div
