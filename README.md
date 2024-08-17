@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="README.css" />
 
-# Django React Auth System
+# Django React FinTrack
 
 This repo contains a Django & React production level authentication functionality. It has most if not all of the features you would expect from a production level authentication feature. It has a fully functional backend with a REST API and a fully functional React frontend. It has the following fully functional features:
 
