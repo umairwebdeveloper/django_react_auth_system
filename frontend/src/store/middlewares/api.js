@@ -1,7 +1,6 @@
 import httpService from "../../utils/httpService";
 import * as actions from "../api";
 import { toast } from "react-hot-toast";
-import { parseErrorMessages } from "../../utils/errorUtils";
 
 const api =
 	({ dispatch }) =>
@@ -34,23 +33,21 @@ const api =
 				toast.success(
 					"Account created successfully. Check your email to verify!"
 				);
-				window.location.href = "/email-sent";
-			} else if (url === "/auth/users/reset_password_confirm/") {
-				toast.success(
-					"Password reset successfully. You can now sign in!"
-				);
-				window.location.href = "/signin";
-			} else {
-        toast.success("Success!");
-      }
+				setTimeout(() => {
+					window.location.href = "/email-sent";
+				}, 2000);
+			}
 		} catch (error) {
-			console.log(error.response);
 			if (error.response.data.detail) {
 				toast.error(error.response.data.detail);
 			} else if (error.response && error.response.data) {
-				const errorMessages = parseErrorMessages(error.response.data);
-				console.log(errorMessages);
-				errorMessages.forEach((error) => toast.error(error));
+				const errorData = error.response.data;
+				// Handle dynamic errors from backend
+				for (const key in errorData) {
+					if (errorData.hasOwnProperty(key)) {
+						toast.error(`${errorData[key][0]}`);
+					}
+				}
 			} else {
 				toast.error("Something went wrong!");
 			}

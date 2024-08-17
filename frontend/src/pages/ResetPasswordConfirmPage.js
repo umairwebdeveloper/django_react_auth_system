@@ -6,6 +6,8 @@ import { reset_password_confirm } from "../store/auth";
 
 const ResetPasswordConfirmPage = () => {
 	const dispatch = useDispatch();
+	const [requestSent, setRequestSent] = useState(false);
+
 	const { uid, token } = useParams();
 	const [formData, setFormData] = useState({
 		new_password: "",
@@ -20,6 +22,7 @@ const ResetPasswordConfirmPage = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (new_password === re_new_password) {
+			setRequestSent(true);
 			dispatch(
 				reset_password_confirm(
 					uid,
@@ -28,6 +31,7 @@ const ResetPasswordConfirmPage = () => {
 					re_new_password
 				)
 			);
+			setRequestSent(false);
 		} else {
 			toast.error("Passwords do not match!");
 		}
@@ -53,6 +57,7 @@ const ResetPasswordConfirmPage = () => {
 								className="form-control"
 								id="new_password"
 								placeholder="New Password"
+								required
 							/>
 						</div>
 
@@ -68,12 +73,14 @@ const ResetPasswordConfirmPage = () => {
 								className="form-control"
 								id="re_new_password"
 								placeholder="Confirm New Password"
+								required
 							/>
 						</div>
 						<button
 							type="submit"
 							className="btn btn-primary mt-3 w-100"
 							style={{ borderRadius: "50px" }}
+							disabled={requestSent}
 						>
 							Reset Password
 						</button>

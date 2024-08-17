@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
 import { reset_password } from "../store/auth";
 
 const ResetPasswordPage = () => {
-	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const [requestSent, setRequestSent] = useState(false);
@@ -20,16 +17,10 @@ const ResetPasswordPage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(reset_password(email));
 		setRequestSent(true);
+		dispatch(reset_password(email));
+		setRequestSent(false);
 	};
-
-	useEffect(() => {
-		if (requestSent) {
-			toast.success("Password reset link sent to your email!");
-			navigate("/email-sent");
-		}
-	}, [requestSent, navigate]);
 
 	return (
 		<div
@@ -54,14 +45,16 @@ const ResetPasswordPage = () => {
 								id="email"
 								aria-describedby="emailHelp"
 								placeholder="Enter email"
+                required
 							/>
 						</div>
 						<button
 							type="submit"
 							className="btn btn-primary mt-3 w-100"
 							style={{ borderRadius: "50px" }}
+							disabled={requestSent}
 						>
-							Request Password Reset
+							{requestSent ? "Loading..." : "Send Reset Link"}
 						</button>
 					</form>
 				</div>
