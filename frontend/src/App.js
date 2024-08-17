@@ -10,6 +10,9 @@ import ActivateAccountPage from "./pages/ActivateAccountPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ResetPasswordConfirmPage from "./pages/ResetPasswordConfirmPage";
 import EmailVerificationPage from "./pages/EmailVerificationPage";
+import ProfilePage from "./pages/ProfilePage";
+import DashboardPage from "./pages/DashboardPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const store = configureStore();
 
@@ -22,6 +25,8 @@ const App = () => {
 						<Route path="/" element={<HomePage />} />
 						<Route path="/signin" element={<LoginPage />} />
 						<Route path="/signup" element={<SignUpPage />} />
+						<Route path="/profile" element={<ProfilePage />} />
+						<Route path="/dashboard" element={<DashboardPage />} />
 						<Route
 							path="/email-sent"
 							element={<EmailVerificationPage />}
@@ -38,6 +43,7 @@ const App = () => {
 							path="/password/reset/confirm/:uid/:token"
 							element={<ResetPasswordConfirmPage />}
 						/>
+						<Route path="*" element={<NotFoundPage />} />
 					</Routes>
 				</Layout>
 			</Router>

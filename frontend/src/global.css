@@ -1,0 +1,11 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Sidebar CSS */
+.content-with-sidebar {
+	margin-left: 250px; /* Matches the width of the sidebar */
+	padding: 20px;
+}

@@ -7,7 +7,7 @@ const HomePage = () => {
 
 	return (
 		<>
-			<section className="py-3 py-lg-5 py-xl-8">
+			<section className="py-3 py-lg-5 py-xl-8 mt-3">
 				<div className="container overflow-hidden">
 					<div className="row gy-5 gy-lg-0 align-items-lg-center justify-content-lg-between">
 						<div className="col-12 col-lg-6 order-1 order-lg-0 pt-5">
@@ -38,7 +38,7 @@ const HomePage = () => {
 							) : (
 								<Link
 									className="btn btn-primary bsb-btn-2xl rounded-pill"
-									to="#"
+									to="/dashboard"
 								>
 									Go to Dashboard
 								</Link>
