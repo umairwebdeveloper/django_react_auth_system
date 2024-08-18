@@ -1,0 +1,232 @@
+[
+	{ "model": "dashboard.source", "pk": 1, "fields": { "name": "Salary" } },
+	{
+		"model": "dashboard.source",
+		"pk": 2,
+		"fields": { "name": "Freelancing" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 3,
+		"fields": { "name": "Business" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 4,
+		"fields": { "name": "Investments" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 5,
+		"fields": { "name": "Rental Income" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 6,
+		"fields": { "name": "Interest" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 7,
+		"fields": { "name": "Dividends" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 8,
+		"fields": { "name": "Capital Gains" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 9,
+		"fields": { "name": "Royalties" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 10,
+		"fields": { "name": "Pension" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 11,
+		"fields": { "name": "Social Security" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 12,
+		"fields": { "name": "Annuities" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 13,
+		"fields": { "name": "Alimony" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 14,
+		"fields": { "name": "Child Support" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 15,
+		"fields": { "name": "Bonuses" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 16,
+		"fields": { "name": "Commissions" }
+	},
+	{ "model": "dashboard.source", "pk": 17, "fields": { "name": "Grants" } },
+	{
+		"model": "dashboard.source",
+		"pk": 18,
+		"fields": { "name": "Scholarships" }
+	},
+	{ "model": "dashboard.source", "pk": 19, "fields": { "name": "Prizes" } },
+	{ "model": "dashboard.source", "pk": 20, "fields": { "name": "Awards" } },
+	{
+		"model": "dashboard.source",
+		"pk": 21,
+		"fields": { "name": "Crowdfunding" }
+	},
+	{ "model": "dashboard.source", "pk": 22, "fields": { "name": "Gifts" } },
+	{
+		"model": "dashboard.source",
+		"pk": 23,
+		"fields": { "name": "Inheritance" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 24,
+		"fields": { "name": "Lottery" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 25,
+		"fields": { "name": "Government Benefits" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 26,
+		"fields": { "name": "Savings" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 27,
+		"fields": { "name": "Side Job" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 28,
+		"fields": { "name": "Overtime Pay" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 29,
+		"fields": { "name": "Stock Options" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 30,
+		"fields": { "name": "Severance Pay" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 31,
+		"fields": { "name": "Contract Work" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 32,
+		"fields": { "name": "Consulting" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 33,
+		"fields": { "name": "Blogging" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 34,
+		"fields": { "name": "YouTube" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 35,
+		"fields": { "name": "Affiliate Marketing" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 36,
+		"fields": { "name": "E-commerce" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 37,
+		"fields": { "name": "Digital Products" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 38,
+		"fields": { "name": "Online Courses" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 39,
+		"fields": { "name": "Real Estate" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 40,
+		"fields": { "name": "Freelance Writing" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 41,
+		"fields": { "name": "Photography" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 42,
+		"fields": { "name": "Graphic Design" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 43,
+		"fields": { "name": "Tutoring" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 44,
+		"fields": { "name": "Coaching" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 45,
+		"fields": { "name": "Web Development" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 46,
+		"fields": { "name": "Mobile App Development" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 47,
+		"fields": { "name": "Podcasting" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 48,
+		"fields": { "name": "Event Planning" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 49,
+		"fields": { "name": "Interior Design" }
+	},
+	{
+		"model": "dashboard.source",
+		"pk": 50,
+		"fields": { "name": "Virtual Assistant" }
+	}
+]

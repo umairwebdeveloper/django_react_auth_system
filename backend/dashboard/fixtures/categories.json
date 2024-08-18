@@ -1,0 +1,232 @@
+[
+	{ "model": "dashboard.category", "pk": 1, "fields": { "name": "Food" } },
+	{
+		"model": "dashboard.category",
+		"pk": 2,
+		"fields": { "name": "Transport" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 3,
+		"fields": { "name": "Utilities" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 4,
+		"fields": { "name": "Entertainment" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 5,
+		"fields": { "name": "Health" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 6,
+		"fields": { "name": "Education" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 7,
+		"fields": { "name": "Groceries" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 8,
+		"fields": { "name": "Dining Out" }
+	},
+	{ "model": "dashboard.category", "pk": 9, "fields": { "name": "Rent" } },
+	{
+		"model": "dashboard.category",
+		"pk": 10,
+		"fields": { "name": "Mortgage" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 11,
+		"fields": { "name": "Insurance" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 12,
+		"fields": { "name": "Clothing" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 13,
+		"fields": { "name": "Gifts" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 14,
+		"fields": { "name": "Savings" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 15,
+		"fields": { "name": "Investments" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 16,
+		"fields": { "name": "Taxes" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 17,
+		"fields": { "name": "Charity" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 18,
+		"fields": { "name": "Childcare" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 19,
+		"fields": { "name": "Pet Care" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 20,
+		"fields": { "name": "Subscriptions" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 21,
+		"fields": { "name": "Internet" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 22,
+		"fields": { "name": "Phone" }
+	},
+	{ "model": "dashboard.category", "pk": 23, "fields": { "name": "TV" } },
+	{
+		"model": "dashboard.category",
+		"pk": 24,
+		"fields": { "name": "Water" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 25,
+		"fields": { "name": "Electricity" }
+	},
+	{ "model": "dashboard.category", "pk": 26, "fields": { "name": "Gas" } },
+	{
+		"model": "dashboard.category",
+		"pk": 27,
+		"fields": { "name": "Home Maintenance" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 28,
+		"fields": { "name": "Home Improvement" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 29,
+		"fields": { "name": "Furniture" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 30,
+		"fields": { "name": "Appliances" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 31,
+		"fields": { "name": "Tools" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 32,
+		"fields": { "name": "Electronics" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 33,
+		"fields": { "name": "Office Supplies" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 34,
+		"fields": { "name": "Books" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 35,
+		"fields": { "name": "Music" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 36,
+		"fields": { "name": "Movies" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 37,
+		"fields": { "name": "Sports" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 38,
+		"fields": { "name": "Hobbies" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 39,
+		"fields": { "name": "Travel" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 40,
+		"fields": { "name": "Vacation" }
+	},
+	{ "model": "dashboard.category", "pk": 41, "fields": { "name": "Gym" } },
+	{
+		"model": "dashboard.category",
+		"pk": 42,
+		"fields": { "name": "Beauty" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 43,
+		"fields": { "name": "Personal Care" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 44,
+		"fields": { "name": "Laundry" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 45,
+		"fields": { "name": "Cleaning" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 46,
+		"fields": { "name": "Bank Fees" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 47,
+		"fields": { "name": "Credit Card Payments" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 48,
+		"fields": { "name": "Loan Payments" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 49,
+		"fields": { "name": "Interest Payments" }
+	},
+	{
+		"model": "dashboard.category",
+		"pk": 50,
+		"fields": { "name": "Miscellaneous" }
+	}
+]

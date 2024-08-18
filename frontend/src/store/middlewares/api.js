@@ -40,7 +40,7 @@ const api =
 		} catch (error) {
 			if (error.response.data.detail) {
 				toast.error(error.response.data.detail);
-			} else if (error.response && error.response.data) {
+			} else if (error.response && error.response.data && typeof error.response.data === "object") {
 				const errorData = error.response.data;
 				// Handle dynamic errors from backend
 				for (const key in errorData) {

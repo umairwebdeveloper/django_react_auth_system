@@ -13,6 +13,12 @@ import EmailVerificationPage from "./pages/EmailVerificationPage";
 import ProfilePage from "./pages/ProfilePage";
 import DashboardPage from "./pages/DashboardPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import CreateIncome from "./pages/CreateIncome";
+import CreateExpense from "./pages/CreateExpense";
+import Expense from "./pages/Expense";
+import EditExpense from "./pages/EditExpense";
+import Income from "./pages/Income";
+import EditIncome from "./pages/EditIncome";
 
 const store = configureStore();
 
@@ -27,6 +33,24 @@ const App = () => {
 						<Route path="/signup" element={<SignUpPage />} />
 						<Route path="/profile" element={<ProfilePage />} />
 						<Route path="/dashboard" element={<DashboardPage />} />
+						<Route path="/income" element={<Income />} />
+						<Route
+							path="/income/create"
+							element={<CreateIncome />}
+						/>
+						<Route
+							path="/income/edit/:id"
+							element={<EditIncome />}
+						/>
+						<Route path="/expense" element={<Expense />} />
+						<Route
+							path="/expense/create"
+							element={<CreateExpense />}
+						/>
+						<Route
+							path="/expense/edit/:id"
+							element={<EditExpense />}
+						/>
 						<Route
 							path="/email-sent"
 							element={<EmailVerificationPage />}
