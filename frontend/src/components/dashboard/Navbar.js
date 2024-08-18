@@ -68,7 +68,7 @@ const SidebarNavbar = () => {
 											className="dropdown-item"
 											onClick={handleLogout}
 										>
-											<i class="fa-solid fa-right-from-bracket me-1"></i>
+											<i className="fa-solid fa-right-from-bracket me-1"></i>
 											Logout
 										</button>
 									</li>

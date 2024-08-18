@@ -10,7 +10,6 @@ const Navbar = () => {
 
 	const { isAuthenticated, user } = useSelector((state) => state.auth);
 
-
 	useEffect(() => {
 		dispatch(checkAuthenticated());
 		isAuthenticated && dispatch(loadUser());
@@ -85,7 +84,7 @@ const Navbar = () => {
 												className="dropdown-item"
 												onClick={handleLogout}
 											>
-												<i class="fa-solid fa-right-from-bracket me-1"></i>
+												<i className="fa-solid fa-right-from-bracket me-1"></i>
 												Logout
 											</button>
 										</li>
@@ -100,7 +99,7 @@ const Navbar = () => {
 										to="/signin"
 										activeClassName="active"
 									>
-										<i class="fa-solid fa-right-to-bracket me-1"></i>
+										<i className="fa-solid fa-right-to-bracket me-1"></i>
 										Sign In
 									</NavLink>
 								</li>
@@ -110,7 +109,7 @@ const Navbar = () => {
 										to="/signup"
 										activeClassName="active"
 									>
-										<i class="fa-solid fa-registered me-1"></i>
+										<i className="fa-solid fa-registered me-1"></i>
 										Sign Up
 									</NavLink>
 								</li>
