@@ -3,6 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import debounce from "lodash.debounce";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 
 const ListData = ({ endpoint, columns, entityName }) => {
 	const [data, setData] = useState([]);
@@ -108,6 +112,41 @@ const ListData = ({ endpoint, columns, entityName }) => {
 		handleSearch(query);
 	};
 
+	// Export to PDF
+	const exportPDF = () => {
+		const doc = new jsPDF();
+		doc.autoTable({
+			head: [columns.map((col) => col.header)],
+			body: filteredData.map((item) =>
+				columns.map((col) => item[col.field])
+			),
+		});
+		doc.save(`${entityName}_data.pdf`);
+	};
+
+
+	// Export to Excel
+	const exportExcel = () => {
+		const ws = XLSX.utils.json_to_sheet(
+			filteredData.map((item) =>
+				columns.reduce((acc, col) => {
+					acc[col.header] = item[col.field];
+					return acc;
+				}, {})
+			)
+		);
+		const wb = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(wb, ws, entityName);
+		const excelBuffer = XLSX.write(wb, {
+			bookType: "xlsx",
+			type: "array",
+		});
+		const data = new Blob([excelBuffer], {
+			type: "application/octet-stream",
+		});
+		saveAs(data, `${entityName}_data.xlsx`);
+	};
+
 	if (error) {
 		return (
 			<div className="alert alert-danger m-3 p-2 rounded">{error}</div>
@@ -128,6 +167,20 @@ const ListData = ({ endpoint, columns, entityName }) => {
 						>
 							Add New (+)
 						</Link>
+						<div>
+							<button
+								className="btn btn-outline-dark me-2"
+								onClick={exportPDF}
+							>
+								Export PDF
+							</button>
+							<button
+								className="btn btn-outline-dark"
+								onClick={exportExcel}
+							>
+								Export Excel
+							</button>
+						</div>
 						<input
 							type="text"
 							className="form-control w-25"

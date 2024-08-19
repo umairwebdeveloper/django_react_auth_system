@@ -187,6 +187,4 @@ The following endpoints are available in the backend API as per the [Djoser](htt
 </table>
 
 
-
-
 python manage.py loaddata categories.json sources.json
