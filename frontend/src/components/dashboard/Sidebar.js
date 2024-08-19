@@ -99,6 +99,17 @@ const Sidebar = () => {
 						<span>My Expenses</span>
 					</Link>
 				</li>
+				<li className="sidebar-item mb-2">
+					<Link
+						to="/chatgpt"
+						className={`sidebar-link d-flex align-items-center gap-1 ${
+							isActive("/chatgpt") ? "active" : ""
+						}`}
+					>
+						<i className="fas fa-robot"></i>
+						<span>Chat GPT</span>
+					</Link>
+				</li>
 			</ul>
 			<div className="sidebar-footer">
 				<a

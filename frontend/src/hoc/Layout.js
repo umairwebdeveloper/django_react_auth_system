@@ -13,8 +13,9 @@ const Layout = ({ children }) => {
 		"/expense/create",
 		"/expense/edit",
 		"/income",
-		"income/create",
-		"income/edit",
+		"/income/create",
+		"/income/edit",
+		"/chatgpt",
 	]; // Only dashboard routes
 
 	// Check if the current path matches any of the dashboard routes
@@ -44,7 +45,10 @@ const Layout = ({ children }) => {
 						<Sidebar />
 						<div className="main">
 							<SidebarNavbar />
-							<main className="content px-3 py-4" style={{overflow: "auto"}}>
+							<main
+								className="content px-3 py-4"
+								style={{ overflow: "auto" }}
+							>
 								<div className="container-fluid">
 									{children}
 								</div>

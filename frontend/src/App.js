@@ -19,6 +19,7 @@ import Expense from "./pages/Expense";
 import EditExpense from "./pages/EditExpense";
 import Income from "./pages/Income";
 import EditIncome from "./pages/EditIncome";
+import ChatGPT from "./pages/ChatGpt";
 
 const store = configureStore();
 
@@ -33,6 +34,7 @@ const App = () => {
 						<Route path="/signup" element={<SignUpPage />} />
 						<Route path="/profile" element={<ProfilePage />} />
 						<Route path="/dashboard" element={<DashboardPage />} />
+						<Route path="/chatgpt" element={<ChatGPT />} />
 						<Route path="/income" element={<Income />} />
 						<Route
 							path="/income/create"
