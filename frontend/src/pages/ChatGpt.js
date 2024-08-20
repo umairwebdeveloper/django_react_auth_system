@@ -11,8 +11,8 @@ import {
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const API_KEY =
-	"123";
+const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+
 // "Explain things like you would to a 10 year old learning how to code."
 const systemMessage = {
 	//  Explain things like you're talking to a software professional with 5 years of experience.
@@ -30,12 +30,11 @@ function ChatGPT() {
 		},
 	]);
 	const [isTyping, setIsTyping] = useState(false);
-
 	const handleSend = async (message) => {
 		const newMessage = {
 			message,
 			direction: "outgoing",
-			sender: "assistant",
+			sender: "user",
 		};
 
 		const newMessages = [...messages, newMessage];
@@ -120,7 +119,7 @@ function ChatGPT() {
 				<MainContainer>
 					<ChatContainer>
 						<MessageList
-							className="py-2"
+							className="pt-2"
 							scrollBehavior="smooth"
 							typingIndicator={
 								isTyping ? (
@@ -129,8 +128,13 @@ function ChatGPT() {
 							}
 						>
 							{messages.map((message, i) => {
-								console.log(message);
-								return <Message key={i} model={message} />;
+								return (
+									<Message
+										key={i}
+										model={message}
+										className="mb-2"
+									/>
+								);
 							})}
 						</MessageList>
 						<MessageInput

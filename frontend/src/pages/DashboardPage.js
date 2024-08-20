@@ -228,7 +228,7 @@ const DashboardPage = () => {
 										</div>
 										<div className="card-body">
 											<h5 className="card-title">
-												${card.value.toFixed(2)}
+												${card?.value?.toFixed(2)}
 											</h5>
 										</div>
 									</div>
@@ -380,7 +380,7 @@ const DashboardPage = () => {
 										</div>
 										<div className="card-body">
 											<h5 className="card-title">
-												${card.value.toFixed(2)}
+												${card?.value?.toFixed(2)}
 											</h5>
 										</div>
 									</div>
