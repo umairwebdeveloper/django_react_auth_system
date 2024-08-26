@@ -15,6 +15,10 @@ const SignUpPage = () => {
 		password: "",
 		re_password: "",
 	});
+
+	const [showPassword, setShowPassword] = useState(false);
+	const [showRePassword, setShowRePassword] = useState(false);
+
 	const { first_name, last_name, email, password, re_password } = formData;
 
 	const { isAuthenticated, loading } = useSelector((state) => state.auth);
@@ -40,7 +44,7 @@ const SignUpPage = () => {
 			toast.success("Account created!");
 			navigate("/");
 		}
-	}, [isAuthenticated]);
+	}, [isAuthenticated, navigate]);
 
 	return (
 		<div
@@ -51,7 +55,7 @@ const SignUpPage = () => {
 				<div className="col-lg-4 col-md-10">
 					<h1 className="text-center">Sign Up</h1>
 					<p className="text-center">Create your account</p>
-					<form onSubmit={(e) => handleSubmit(e)}>
+					<form onSubmit={handleSubmit}>
 						<div className="form-group mb-3">
 							<label htmlFor="first_name">First Name</label>
 							<input
@@ -94,32 +98,66 @@ const SignUpPage = () => {
 						</div>
 						<div className="form-group mb-3">
 							<label htmlFor="password">Password</label>
-							<input
-								type="password"
-								name="password"
-								value={password}
-								onChange={handleOnChange}
-								className="form-control"
-								id="password"
-								required
-								placeholder="Password"
-							/>
+							<div className="input-group">
+								<input
+									type={showPassword ? "text" : "password"}
+									name="password"
+									value={password}
+									onChange={handleOnChange}
+									className="form-control"
+									id="password"
+									required
+									placeholder="Password"
+								/>
+								<span
+									className="input-group-text"
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+									style={{ cursor: "pointer" }}
+								>
+									<i
+										className={`fas ${
+											showPassword
+												? "fa-eye-slash"
+												: "fa-eye"
+										}`}
+									></i>
+								</span>
+							</div>
 						</div>
 
 						<div className="form-group mb-3">
 							<label htmlFor="re_password">
 								Confirm Password
 							</label>
-							<input
-								type="password"
-								name="re_password"
-								value={re_password}
-								onChange={handleOnChange}
-								className="form-control"
-								id="re_password"
-								required
-								placeholder="Confirm Password"
-							/>
+							<div className="input-group">
+								<input
+									type={showRePassword ? "text" : "password"}
+									name="re_password"
+									value={re_password}
+									onChange={handleOnChange}
+									className="form-control"
+									id="re_password"
+									required
+									placeholder="Confirm Password"
+								/>
+								<span
+									className="input-group-text"
+									onClick={() =>
+										setShowRePassword(!showRePassword)
+									}
+									style={{ cursor: "pointer" }}
+								>
+									<i
+										className={`fas ${
+											showRePassword
+												? "fa-eye-slash"
+												: "fa-eye"
+										}`}
+									></i>
+								</span>
+							</div>
 						</div>
 
 						<button

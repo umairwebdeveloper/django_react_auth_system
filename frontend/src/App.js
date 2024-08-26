@@ -20,6 +20,9 @@ import EditExpense from "./pages/EditExpense";
 import Income from "./pages/Income";
 import EditIncome from "./pages/EditIncome";
 import ChatGPT from "./pages/ChatGpt";
+import PasswordChange from "./pages/PasswordChange";
+import BudgetPage from "./pages/BudgetPage";
+import SourceCategoryPage from "./pages/SourceCategoryPage";
 
 const store = configureStore();
 
@@ -33,8 +36,14 @@ const App = () => {
 						<Route path="/signin" element={<LoginPage />} />
 						<Route path="/signup" element={<SignUpPage />} />
 						<Route path="/profile" element={<ProfilePage />} />
+						<Route
+							path="/password-change"
+							element={<PasswordChange />}
+						/>
 						<Route path="/dashboard" element={<DashboardPage />} />
-						<Route path="/chatgpt" element={<ChatGPT />} />
+						<Route path="/budget" element={<BudgetPage />} />
+						<Route path="/source-category" element={<SourceCategoryPage />} />
+						<Route path="/budget-ai" element={<ChatGPT />} />
 						<Route path="/income" element={<Income />} />
 						<Route
 							path="/income/create"

@@ -25,7 +25,7 @@ const Navbar = () => {
 		<nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
 			<div className="container">
 				<NavLink className="navbar-brand" to="/">
-					FinTrack
+					BudgetApp
 				</NavLink>
 				<button
 					className="navbar-toggler"
@@ -42,6 +42,16 @@ const Navbar = () => {
 					<ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 						{isAuthenticated ? (
 							<>
+								<li className="nav-item d-flex flex-column justify-content-center align-items-center">
+									<NavLink
+										className="nav-link d-flex justify-content-center align-items-center"
+										to="/dashboard"
+										activeClassName="active"
+									>
+										<i className="fa-solid fa-gauge me-1 fs-5"></i>
+										Dashboard
+									</NavLink>
+								</li>
 								<li className="nav-item dropdown">
 									<a
 										className="nav-link dropdown-toggle d-flex align-items-center"
@@ -51,7 +61,7 @@ const Navbar = () => {
 										data-bs-toggle="dropdown"
 										aria-expanded="false"
 									>
-										<i className="fa-solid fa-circle-user me-2 fs-2"></i>
+										<i className="fa-solid fa-circle-user me-1 fs-5"></i>
 										<span className="navbar-text py-0">
 											{user?.first_name}
 										</span>

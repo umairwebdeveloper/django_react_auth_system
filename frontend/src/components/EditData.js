@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const EditData = ({
@@ -73,9 +74,17 @@ const EditData = ({
 					Authorization: `JWT ${accessToken}`,
 				},
 			})
-			.then(() => {
+			.then((response) => {
 				toast.success(`${entityName} updated successfully!`);
 				navigate(`/${entityName}`);
+				if (
+					entityName === "expense" &&
+					response.data?.notification_sent
+				) {
+					toast.success(
+						"Your total expenses have reached your budget !"
+					);
+				}
 			})
 			.catch((error) => {
 				toast.error("Failed to update item.");
@@ -112,7 +121,19 @@ const EditData = ({
 							</div>
 						))}
 						<div className="mb-3">
-							<label className="form-label">{selectHeader}</label>
+							<label className="form-label">
+								{selectHeader}{" "}
+								<Link
+									className="ms-1"
+									to={`/source-category/?edit=true&backUrlId=${id}&${
+										entityName == "income"
+											? "income=true&expense=false"
+											: "income=false&expense=true"
+									}`}
+								>
+									<i class="fa-solid fa-plus"></i>
+								</Link>
+							</label>
 							<select
 								name={selectName}
 								className="form-control"

@@ -41,9 +41,24 @@ const Sidebar = () => {
 	// Function to check if the link is active
 	const isActive = (path) => {
 		const currentPath = location.pathname.split("/")[1];
+		const queryParams = new URLSearchParams(location.search);
+
+		// Handle query params for income and expense
+		const isIncomeActive = queryParams.get("income") === "true";
+		const isExpenseActive = queryParams.get("expense") === "true";
+
+		if (path === "/income" && isIncomeActive) {
+			return true;
+		}
+
+		if (path === "/expense" && isExpenseActive) {
+			return true;
+		}
+
 		if (currentPath === "") {
 			return path === "/dashboard";
 		}
+
 		return currentPath === path.split("/")[1];
 	};
 
@@ -56,13 +71,11 @@ const Sidebar = () => {
 					onClick={toggleSidebar}
 				>
 					<i
-						className={`fas fa-chevron-${
-							isExpanded ? "left" : "right"
-						}`}
+						className={`fas ${isExpanded ? "fa-xmark" : "fa-bars"}`}
 					></i>
 				</button>
 				<div className="sidebar-logo">
-					<Link to="/">FinTrack</Link>
+					<Link to="/">BudgetApp</Link>
 				</div>
 			</div>
 			<ul className="sidebar-nav pt-3">
@@ -75,6 +88,17 @@ const Sidebar = () => {
 					>
 						<i className="fa-solid fa-gauge"></i>
 						<span>Dashboard</span>
+					</Link>
+				</li>
+				<li className="sidebar-item mb-2">
+					<Link
+						to="/budget"
+						className={`sidebar-link d-flex align-items-center gap-1 ${
+							isActive("/budget") ? "active" : ""
+						}`}
+					>
+						<i class="fa-solid fa-dollar-sign"></i>
+						<span>My Budget</span>
 					</Link>
 				</li>
 				<li className="sidebar-item mb-2">
@@ -101,13 +125,13 @@ const Sidebar = () => {
 				</li>
 				<li className="sidebar-item mb-2">
 					<Link
-						to="/chatgpt"
+						to="/budget-ai"
 						className={`sidebar-link d-flex align-items-center gap-1 ${
-							isActive("/chatgpt") ? "active" : ""
+							isActive("/budget-ai") ? "active" : ""
 						}`}
 					>
 						<i className="fas fa-robot"></i>
-						<span>Chat GPT</span>
+						<span>Budget AI</span>
 					</Link>
 				</li>
 			</ul>

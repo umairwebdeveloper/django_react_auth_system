@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -14,7 +14,6 @@ const CreateData = ({
 }) => {
 	const { id } = useParams(); // Get the ID from URL params
 
-    
 	const [formData, setFormData] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectOptions, setSelectOptions] = useState([]);
@@ -46,7 +45,7 @@ const CreateData = ({
 	}, [selectEndpoint, accessToken]);
 
 	useEffect(() => {
-        console.log("ID: ", id);
+		console.log("ID: ", id);
 		// If ID is present, fetch the existing data
 		if (id) {
 			setIsLoading(true);
@@ -96,11 +95,19 @@ const CreateData = ({
 			  });
 
 		request
-			.then(() => {
+			.then((response) => {
 				toast.success(
 					`${entityName} ${id ? "updated" : "added"} successfully!`
 				);
 				navigate(`/${entityName}`);
+				if (
+					entityName === "expense" &&
+					response.data?.notification_sent
+				) {
+					toast.success(
+						"Your total expenses have reached your budget !"
+					);
+				}
 			})
 			.catch((error) => {
 				toast.error(`Failed to ${id ? "update" : "add"} the item.`);
@@ -137,7 +144,19 @@ const CreateData = ({
 							</div>
 						))}
 						<div className="mb-3">
-							<label className="form-label">{selectHeader}</label>
+							<label className="form-label">
+								{selectHeader}{" "}
+								<Link
+									className="ms-1"
+									to={`/source-category/?${
+										entityName == "income"
+											? "income=true&expense=false"
+											: "income=false&expense=true"
+									}`}
+								>
+									<i class="fa-solid fa-plus"></i>
+								</Link>
+							</label>
 							<select
 								name={selectName}
 								className="form-control"

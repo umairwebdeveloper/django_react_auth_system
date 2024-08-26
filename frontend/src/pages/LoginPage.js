@@ -12,6 +12,8 @@ const LoginPage = () => {
 		email: "",
 		password: "",
 	});
+	const [showPassword, setShowPassword] = useState(false); // State for password visibility
+
 	const { email, password } = formData;
 
 	const { isAuthenticated, loading } = useSelector((state) => state.auth);
@@ -27,9 +29,9 @@ const LoginPage = () => {
 
 	useEffect(() => {
 		if (isAuthenticated) {
-      toast.success("Logged in successfully!");
-      navigate("/");
-    }
+			toast.success("Logged in successfully!");
+			navigate("/");
+		}
 	}, [isAuthenticated, navigate]);
 
 	return (
@@ -57,15 +59,32 @@ const LoginPage = () => {
 						</div>
 						<div className="form-group mb-3">
 							<label htmlFor="password">Password</label>
-							<input
-								type="password"
-								name="password"
-								value={password}
-								onChange={handleOnChange}
-								className="form-control"
-								id="password"
-								placeholder="Password"
-							/>
+							<div className="input-group">
+								<input
+									type={showPassword ? "text" : "password"} // Toggle input type based on state
+									name="password"
+									value={password}
+									onChange={handleOnChange}
+									className="form-control"
+									id="password"
+									placeholder="Password"
+								/>
+								<span
+									className="input-group-text"
+									onClick={() =>
+										setShowPassword(!showPassword)
+									}
+									style={{ cursor: "pointer" }}
+								>
+									<i
+										className={`fas ${
+											showPassword
+												? "fa-eye-slash"
+												: "fa-eye"
+										}`}
+									></i>
+								</span>
+							</div>
 						</div>
 
 						<button

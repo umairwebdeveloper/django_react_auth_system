@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from .models import Expense, Income, Category, Source
-from rest_framework import generics
-from .serializers import ExpenseSerializer, IncomeSerializer, CategorySerializer, SourceSerializer, WeeklyExpenseSerializer, YearlyExpenseSerializer, WeeklyIncomeSerializer, YearlyIncomeSerializer
+from .models import Expense, Income, Category, Source, UserPreference
+from rest_framework import generics, status
+from .serializers import ExpenseSerializer, IncomeSerializer, CategorySerializer, SourceSerializer, WeeklyExpenseSerializer, YearlyExpenseSerializer, WeeklyIncomeSerializer, YearlyIncomeSerializer, ChangePasswordSerializer, UserPreferenceSerializer
 from django.db.models import Sum, Count
 import datetime
 from rest_framework.views import APIView
@@ -10,12 +10,13 @@ from rest_framework.response import Response
 from django.utils.timezone import now
 from django.utils import timezone
 from datetime import timedelta
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class ExpenseViewSet(viewsets.ModelViewSet):
     serializer_class = ExpenseSerializer
     permission_classes = [IsAuthenticated]
-
+    
     def get_queryset(self):
         user = self.request.user
         queryset = Expense.objects.filter(user=user)
@@ -23,6 +24,35 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         if category:
             queryset = queryset.filter(category__name=category)
         return queryset
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        expense = serializer.save(user=request.user)
+        notification_sent = expense.check_and_notify()
+        headers = self.get_success_headers(serializer.data)
+        
+        response_data = {
+            **serializer.data,  # Include the serialized expense data
+            'notification_sent': notification_sent  # Include whether a notification was sent
+        }
+        
+        return Response(response_data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        expense = serializer.save()
+        notification_sent = expense.check_and_notify()
+        
+        response_data = {
+            **serializer.data,  # Include the serialized expense data
+            'notification_sent': notification_sent  # Include whether a notification was sent
+        }
+        
+        return Response(response_data)
 
 class IncomeViewSet(viewsets.ModelViewSet):
     serializer_class = IncomeSerializer
@@ -36,15 +66,13 @@ class IncomeViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(category__name=category)
         return queryset
     
-class CategoryListView(generics.ListAPIView):
+class CategoryListView(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticated]
     
-class SourceListView(generics.ListAPIView):
+class SourceListView(viewsets.ModelViewSet):
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
-    permission_classes = [IsAuthenticated]
     
 
 def calculate_user_expenses(user):
@@ -234,3 +262,24 @@ class DashboardSummaryAPIView(APIView):
         return Response({'expense_category_data': finalrep_exp, 'income_source_data': finalrep_inc,
                          'user_expenses': user_expenses, 'user_incomes': user_incomes, 'weekly_expenses': weekly_expenses_serializer.data,
                          'yearly_expenses': yearly_expense_serializer.data, 'weekly_incomes': weekly_income_serializer.data, 'yearly_incomes': yearly_income_serializer.data})
+        
+class ChangePasswordView(generics.GenericAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        serializer = ChangePasswordSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            # Save the new password
+            serializer.update(request.user, serializer.validated_data)
+            return Response({"detail": "Password changed successfully."}, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class UserPreferenceRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserPreferenceSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        user = self.request.user
+        user_preference, created = UserPreference.objects.get_or_create(user=user)
+        return user_preference

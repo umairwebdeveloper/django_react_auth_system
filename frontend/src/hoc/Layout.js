@@ -15,7 +15,9 @@ const Layout = ({ children }) => {
 		"/income",
 		"/income/create",
 		"/income/edit",
-		"/chatgpt",
+		"/budget-ai",
+		"/budget",
+		"/source-category",
 	]; // Only dashboard routes
 
 	// Check if the current path matches any of the dashboard routes

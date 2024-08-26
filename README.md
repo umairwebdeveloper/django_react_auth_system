@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="README.css" />
 
-# Django React FinTrack
+# Django React BudgetApp
 
 This repo contains a Django & React production level authentication functionality. It has most if not all of the features you would expect from a production level authentication feature. It has a fully functional backend with a REST API and a fully functional React frontend. It has the following fully functional features:
 
-- Account registration with email verification/activation
-- Sign in with email and password with JWT authentication
-- Sign in with Google
-- Sign in with Facebook
-- Password reset with email verification
+-   Account registration with email verification/activation
+-   Sign in with email and password with JWT authentication
+-   Sign in with Google
+-   Sign in with Facebook
+-   Password reset with email verification
 
 A live demo of the project can be found [here](https://justicenyaga.pythonanywhere.com/).
 
@@ -24,32 +24,32 @@ A live demo of the project can be found [here](https://justicenyaga.pythonanywhe
 
 ### Prerequisites
 
-- [Python 3.8](https://www.python.org/downloads/)
-- [Node.js](https://nodejs.org/en/download/)
-- [PostgreSQL](https://www.postgresql.org/download/)
-- [Google OAuth2 Credentials](https://developers.google.com/identity/protocols/oauth2)
-- [Facebook OAuth2 Credentials](https://developers.facebook.com/docs/facebook-login/web)
+-   [Python 3.8](https://www.python.org/downloads/)
+-   [Node.js](https://nodejs.org/en/download/)
+-   [PostgreSQL](https://www.postgresql.org/download/)
+-   [Google OAuth2 Credentials](https://developers.google.com/identity/protocols/oauth2)
+-   [Facebook OAuth2 Credentials](https://developers.facebook.com/docs/facebook-login/web)
 
 ### Installation
 
 1. Clone the repo
 
-   ```sh
-   git clone https://github.com/justicenyaga/django_react_auth_system.git && cd django_react_auth_system
-   ```
+    ```sh
+    git clone https://github.com/justicenyaga/django_react_auth_system.git && cd django_react_auth_system
+    ```
 
 2. Install Python packages. It is recommended to use a virtual environment.
 
-   ```sh
-   virtualenv venv && source venv/bin/activate # Create a virtual environment and activate it
-   cd backend && pip install -r requirements.txt
-   ```
+    ```sh
+    virtualenv venv && source venv/bin/activate # Create a virtual environment and activate it
+    cd backend && pip install -r requirements.txt
+    ```
 
 3. (Optional) Install npm packages. You can skip this step if you don't want to run the frontend separately as the frontend is already built and being served by the backend.
 
-   ```sh
-   cd frontend && npm install
-   ```
+    ```sh
+    cd frontend && npm install
+    ```
 
 4. Create a `.env` file in backend directory and add the variables as shown in the .env-example file. You will need to add your own values for the variables. You can optionally export the variables as environment variables to your terminal.
 
@@ -57,25 +57,25 @@ A live demo of the project can be found [here](https://justicenyaga.pythonanywhe
 
 6. Run the migrations
 
-   ```sh
-   python manage.py migrate
-   ```
+    ```sh
+    python manage.py migrate
+    ```
 
 7. Run the backend server
 
-   ```sh
-   python manage.py runserver
-   ```
+    ```sh
+    python manage.py runserver
+    ```
 
-   This will run the backend server on [http://localhost:8000](http://localhost:8000)
+    This will run the backend server on [http://localhost:8000](http://localhost:8000)
 
 8. (Optional) Run the frontend server. You can skip this step if you don't want to run the frontend separately as the frontend is already built and being served by the backend.
 
-   ```sh
-   cd frontend && npm start
-   ```
+    ```sh
+    cd frontend && npm start
+    ```
 
-   This will run the frontend server on [http://localhost:3000](http://localhost:3000)
+    This will run the frontend server on [http://localhost:3000](http://localhost:3000)
 
 ## API Endpoints
 
@@ -185,6 +185,5 @@ The following endpoints are available in the backend API as per the [Djoser](htt
     </tr>
   </tbody>
 </table>
-
 
 python manage.py loaddata categories.json sources.json
